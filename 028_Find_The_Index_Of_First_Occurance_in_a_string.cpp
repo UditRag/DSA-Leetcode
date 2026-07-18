@@ -38,3 +38,31 @@ int main(){
     cout<<endl;
     cout<< *base.begin();
 }
+
+
+// Second Brute
+
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        char base = needle[0];
+        for(int i =0; i<haystack.size();i++){
+            if(base == haystack[i]){
+                int j =1;
+                while(j<needle.size()){
+                    if( i+j >= haystack.size() ||
+                    needle[j] != haystack[i+j] ){
+                        break;
+                    }
+                    j++;
+                }
+                if(j == needle.size()){
+            return i;
+                
+            }
+        }
+        
+        }
+        return -1;
+    }
+};
