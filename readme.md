@@ -1,125 +1,70 @@
-# 💻 LeetCode Solutions
+# LeetCode Solutions 🧩
 
-Welcome to my LeetCode repository!
+A collection of LeetCode problems I've solved, uploaded as I go. Solutions are organized by problem number.
 
-This repository contains my **C++** solutions to LeetCode problems as I prepare for **coding interviews, internships, and placements**. My focus is on writing clean, efficient code while learning different problem-solving patterns.
+## 📂 Structure
 
----
-
-# 👨‍💻 About Me
-
-- 🎓 B.Tech CSE Student
-- 💻 Language: C++
-- 🎯 Goal: Strengthen DSA and consistently solve LeetCode problems
-- 📅 Challenge: Solve at least **one LeetCode problem every day**
-
----
-
-# 📂 Repository Structure
+Each file is named with the problem's LeetCode number and title, e.g.:
 
 ```
-LeetCode/
-│
-├── Arrays/
-├── Strings/
-├── HashMap/
-├── Stack/
-├── Queue/
-├── LinkedList/
-├── Trees/
-├── Graph/
-├── DynamicProgramming/
-└── README.md
+0001-two-sum.cpp
+0020-valid-parentheses.cpp
+0141-linked-list-cycle.cpp
 ```
 
----
+No fixed folder structure by topic or difficulty — just a running log of problems solved, in the order they were added.
 
-# 📈 Progress
+## 🧠 Solution Format
 
-| Topic | Solved |
-|--------|:------:|
-| Arrays | 5 |
-| Strings | 2 |
-| HashMap | In Progress |
-| Stack | Coming Soon |
-| Queue | Coming Soon |
-| Linked List | Coming Soon |
-| Trees | Coming Soon |
-| Graph | Coming Soon |
-| Dynamic Programming | Coming Soon |
+Each file includes the problem link and my actual thought process — if I first arrived at a brute force approach before finding the optimal one, both are included, in that order.
 
-### Total Problems Solved: **7**
+```cpp
+/*
+LeetCode #1 - Two Sum
+Link: https://leetcode.com/problems/two-sum/
 
----
+Brute Force:
+- Check every pair of numbers to see if they sum to target.
+- Time: O(n^2)
+- Space: O(1)
+*/
 
-# ✅ Problems Solved
+class BruteForce {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums[i] + nums[j] == target)
+                    return {i, j};
+            }
+        }
+        return {};
+    }
+};
 
-| # | Problem | Difficulty | Pattern |
-|---|---------|------------|---------|
-| 1 | Two Sum | Easy | Hash Map |
-| 2 | Contains Duplicate | Easy | Hash Set |
-| 3 | Best Time to Buy and Sell Stock | Easy | Running Minimum |
-| 4 | Product of Array Except Self | Medium | Prefix & Suffix |
-| 5 | Valid Anagram | Easy | Frequency Counting |
-| 6 | Valid Palindrome | Easy | Two Pointers |
-| 7 | Longest Common Prefix | Easy | Vertical Scanning |
+/*
+Optimal:
+- Use a hashmap to store value -> index as we iterate.
+- For each number, check if its complement already exists in the map.
+- Time: O(n)
+- Space: O(n)
+*/
 
----
-
-# 🧠 Patterns Learned
-
-- Hash Map
-- Hash Set
-- Prefix & Suffix Arrays
-- Two Pointers
-- Running Minimum
-- Frequency Counting
-- Vertical Scanning
-
-More patterns will be added as I progress.
-
----
-
-# 📝 File Naming Convention
-
-```
-<Problem_Number>_<Problem_Name>.cpp
-```
-
-Example:
-
-```
-001_Two_Sum.cpp
-121_Best_Time_to_Buy_and_Sell_Stock.cpp
-238_Product_of_Array_Except_Self.cpp
-125_Valid_Palindrome.cpp
+class Optimal {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, int> seen;
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            if (seen.count(complement))
+                return {seen[complement], i};
+            seen[nums[i]] = i;
+        }
+        return {};
+    }
+};
 ```
 
----
+## 🛠️ Tech
 
-# 🛠️ Language
-
-- C++
-
----
-
-# 📚 Learning Resources
-
-- LeetCode
-- NeetCode
-- C++ STL
-- Data Structures & Algorithms
-
----
-
-# 🎯 Current Goal
-
-- Solve LeetCode consistently
-- Learn new DSA patterns
-- Improve code quality
-- Build strong interview problem-solving skills
-- Reach 100+ solved problems
-
----
-
-# ⭐ If you find this repository helpful, feel free to explore the solutions!
+- Language: C++
