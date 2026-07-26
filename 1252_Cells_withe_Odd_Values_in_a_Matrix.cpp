@@ -1,7 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
+
+
+
+// Brute force 
+
+
 
 class Solution {
 public:
@@ -71,6 +78,21 @@ public:
 
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int main() {
     Solution sol;
